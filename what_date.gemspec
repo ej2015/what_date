@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["zorro.ej@gmail.com"]
 
   spec.summary       = %q{A simple tool to return the dates given a day}
-  spec.description   = %q{This gem tells you the date of next Tuesday, or the second day of May}
+  spec.description   = %q{This gem tells you the date of next Tuesday}
   spec.homepage      = "https://github.com/ej2015/what_date.git"
   spec.license       = "MIT"
 
