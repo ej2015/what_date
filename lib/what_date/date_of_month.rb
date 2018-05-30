@@ -38,7 +38,11 @@ module WhatDate
 		end
 
 		def last_date_of_month(month:, year:)
-			Date.parse("#{year}-#{month}-1").end_of_month
+			begin
+				Date.parse("#{year}-#{month}-1").end_of_month
+			rescue ArgumentError
+				nil
+			end
 		end
 
 		private

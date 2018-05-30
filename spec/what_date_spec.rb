@@ -144,6 +144,10 @@ describe WhatDate do
 		it "works with numerical month too" do
       expect(client.last_date_of_month(month: 2, year: 2000)).to eq Date.new(2000,2,29)
 		end
+
+    it "returns nil for invalid dates" do
+      expect(client.last_date_of_month(month: 14, year: 2018)).to eq nil
+		end
 	end
 
 end

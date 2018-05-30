@@ -29,13 +29,17 @@ client.prev_tuesday
 client.next_tuesday
 
 ```
-You can also ask for the date of a particular day of a given month. Use ordinals such as first, second and up to fifth. But 'last' does not work yet.
+You can also ask for the date of a particular day of a given month. Use ordinals such as first, second and up to fifth. You can enquire the last date too.
 
 ```
 client.first_monday_of_june_2018
 ##4 June 2018
+
 client.third_tuesday_of_may_2018
 ##19 June 2018
+
+client.last_monday_of_may_2018
+##28 May 2018
 
 ```
 
