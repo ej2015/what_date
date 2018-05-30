@@ -1,5 +1,5 @@
 # WhatDate
-
+Simple solution to such questions as "What date is next Monday?"
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -29,7 +29,7 @@ $client.prev_tuesday
 $client.next_tuesday
 
 ```
-You can also ask for the date of a particular day of a given month. Use ordinals such as first, second and up to fifth. But'last' does not work yet.
+You can also ask for the date of a particular day of a given month. Use ordinals such as first, second and up to fifth. But 'last' does not work yet.
 
 ```
 $client.first_monday_of_june_2018
