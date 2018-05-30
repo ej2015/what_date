@@ -17,11 +17,23 @@ Or install it yourself as:
     $ gem install what_date
 
 ## Usage
-
+You can query the date of any day in the current week, the previous week or the following week. You can supply a date so the query is relative to the week of the given date
 ```
 $client = WhatDate.client
 $client.friday
 $client.tuesday(Date.new(2018,2,3))  ##date of tuesday in the week of the given date
+$client.prev_tuesday
+$client.next_tuesday
+
+```
+You can also ask for the date of a particular day of a given month. Use ordinals such as first, second and up to fifth. But'last' does not work yet.
+
+```
+$client.first_monday_of_june_2018
+$##4 June 2018
+$client.third_tuesday_of_may_2018
+$##19 June 2018
+
 ```
 
 ## Development
