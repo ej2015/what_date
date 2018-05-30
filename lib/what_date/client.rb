@@ -1,5 +1,6 @@
 require 'active_support'
 require 'active_support/core_ext/date/calculations'
+require 'active_support/core_ext/time/calculations'
 require 'what_date/date_of_month'
 
 module WhatDate

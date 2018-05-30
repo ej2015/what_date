@@ -101,24 +101,48 @@ describe WhatDate do
 	describe "#prev_" do
 		it "returns prevous monday" do
 			expect(client.prev_monday).to eq Date.today.monday - 7
-
 		end
 
 		it "returns prevous Tuesday" do
 			expect(client.prev_monday(Date.new(2018,2,1))).to eq Date.new(2018,1,22)
-
 		end
 	end
 
 	describe "#next_" do
 		it "returns prevous monday" do
 			expect(client.next_monday).to eq Date.today.monday + 7
-
 		end
 
 		it "returns prevous Tuesday" do
 			expect(client.next_monday(Date.new(2018,2,1))).to eq Date.new(2018,2,5)
+		end
+	end
 
+	describe "#last_" do
+		it "returns 26th for last thursday of apr 2018" do
+			expect(client.last_thursday_of_april_2018).to eq Date.new(2018,4,26)
+		end
+
+		it "returns 30th for last monday of apr 2018" do
+			expect(client.last_monday_of_april_2018).to eq Date.new(2018,4,30)
+		end
+
+		it "returns 29th for last sunday of apr 2018" do
+			expect(client.last_sunday_of_april_2018).to eq Date.new(2018,4,29)
+		end
+	end
+
+	describe "#last_date_of_month" do
+    it "returns 31st for August of 2018" do
+      expect(client.last_date_of_month(month: "August", year: 2018)).to eq Date.new(2018,8,31)
+		end
+
+    it "returns 29th for feb  of 2000" do
+      expect(client.last_date_of_month(month: "feb", year: 2000)).to eq Date.new(2000,2,29)
+		end
+
+		it "works with numerical month too" do
+      expect(client.last_date_of_month(month: 2, year: 2000)).to eq Date.new(2000,2,29)
 		end
 	end
 
