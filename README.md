@@ -19,7 +19,10 @@ Or install it yourself as:
 ## Usage
 You can query the date of any day in the current week, the previous week or the following week. You can supply a date so the query is relative to the week of the given date
 ```
+## initialize client
 $client = WhatDate.client
+
+## get dates
 $client.friday
 $client.tuesday(Date.new(2018,2,3))  ##date of tuesday in the week of the given date
 $client.prev_tuesday
