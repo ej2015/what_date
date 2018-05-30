@@ -1,6 +1,8 @@
 module WhatDate
 	module DateOfMonth
 
+		ORDINALS ={ "first" => 1, "second" => 2, "third" => 3, "fourth" => 4, "fifth" => 5 }.freeze
+
 		def date_of_month(order:1, day:, month:, year: Date.today.year)
 			month_int = Date::MONTHNAMES.index(month)
 			first_date = Date.new(year, month_int, 1)
@@ -22,7 +24,7 @@ module WhatDate
 		def method_missing(meth, *args)
 			if meth.to_s =~ /^(first||second||third||fourth||fifth)_(monday||tuesday||wednesday||thursday||friday||saturday||sunday)_of_[a-z]+_\d+$/i
 				methods = meth.to_s.split("_")
-				order = { "first" => 1, "second" => 2, "third" => 3, "fourth" => 4, "fifth" => 5 }[methods[0].downcase]
+				order = ORDINALS.[methods[0].downcase]
 				day = format_date_string methods[1]
 				month = format_date_string methods[3]
 				year = methods[4].to_i
@@ -37,7 +39,6 @@ module WhatDate
 		def format_date_string(str)
 			str.downcase.capitalize
 		end
-
 
 	end
 end
