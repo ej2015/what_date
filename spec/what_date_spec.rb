@@ -70,8 +70,12 @@ describe WhatDate do
 			expect(client.date_of_month(order: 4, day: "Thursday", month: "November", year: 2017)).to eq Date.new(2017,11,23)
 		end
 
-		it "returns the date of first Thursday of August  2019" do
+		it "returns the date of first Thursday of August 2019" do
 			expect(client.date_of_month(day: "Thursday", month: "August", year: 2019)).to eq Date.new(2019,8,1)
+		end
+
+		it "returns nil if date does not exist" do
+			expect(client.date_of_month(order: 9, day: "Thursday", month: "August", year: 2019)).to eq nil
 		end
 	end
 
@@ -87,6 +91,10 @@ describe WhatDate do
 
 		it "returns the date of fourth Thursday of Nov 2017" do
 			expect(client.fourth_thursday_of_november_2017).to eq Date.new(2017,11,23)
+		end
+
+		it "is case insensitive" do
+			expect(client.fourTH_tHursday_of_NOVEMBER_2017).to eq Date.new(2017,11,23)
 		end
 	end
 

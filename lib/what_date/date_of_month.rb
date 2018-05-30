@@ -11,21 +11,31 @@ module WhatDate
 			else
 				inc = (order - 1) * 7 + (lookup - first_day +  1)
 			end
-			Date.new(year, month_int, inc)
+			begin
+				Date.new(year, month_int, inc)
+			rescue ArgumentError
+				nil
+			end
 		end	
 
 
 		def method_missing(meth, *args)
-      if meth.to_s =~ /^(first||second||third||fourth||fifth)_(monday||tuesday||wednesday||thursday||friday||saturday||sunday)_of_[A-Za-z]+_\d+$/
+			if meth.to_s =~ /^(first||second||third||fourth||fifth)_(monday||tuesday||wednesday||thursday||friday||saturday||sunday)_of_[a-z]+_\d+$/i
 				methods = meth.to_s.split("_")
-				order = { "first" => 1, "second" => 2, "third" => 3, "fourth" => 4, "fifth" => 5 }[methods[0]]
-				day = methods[1].titleize
-				month = methods[3].titleize
+				order = { "first" => 1, "second" => 2, "third" => 3, "fourth" => 4, "fifth" => 5 }[methods[0].downcase]
+				day = format_date_string methods[1]
+				month = format_date_string methods[3]
 				year = methods[4].to_i
 				date_of_month(order: order, day: day, month: month, year: year)
 			else
 				super
 			end
+		end
+
+		private
+
+		def format_date_string(str)
+			str.downcase.capitalize
 		end
 
 
