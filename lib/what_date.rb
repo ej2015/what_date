@@ -1,5 +1,9 @@
 require "what_date/version"
+require "what_date/client"
 
 module WhatDate
-  # Your code goes here...
+
+	def self.client
+		WhatDate::Client.new
+	end
 end
