@@ -24,7 +24,7 @@ module WhatDate
 		def method_missing(meth, *args)
 			if meth.to_s =~ /^(first||second||third||fourth||fifth)_(monday||tuesday||wednesday||thursday||friday||saturday||sunday)_of_[a-z]+_\d+$/i
 				methods = meth.to_s.split("_")
-				order = ORDINALS.[methods[0].downcase]
+				order = ORDINALS[methods[0].downcase]
 				day = format_date_string methods[1]
 				month = format_date_string methods[3]
 				year = methods[4].to_i
