@@ -40,8 +40,7 @@ module WhatDate
 		def last_date_of_month(month:, year:)
 			Date.parse("#{year}-#{month}-1").end_of_month
 			rescue ArgumentError
-				nil
-			end
+			nil
 		end
 
 		private
