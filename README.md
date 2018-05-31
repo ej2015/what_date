@@ -1,6 +1,7 @@
 # WhatDate
 [![Maintainability](https://api.codeclimate.com/v1/badges/6d69f10fe80b0730237b/maintainability)](https://codeclimate.com/github/ej2015/what_date/maintainability)
 [![Build Status](https://travis-ci.org/ej2015/what_date.svg?branch=master)](https://travis-ci.org/ej2015/what_date)
+[![CodeFactor](https://www.codefactor.io/repository/github/ej2015/what_date/badge)](https://www.codefactor.io/repository/github/ej2015/what_date)
 Simple solution to such questions as "What date is next Monday?"
 ## Installation
 
