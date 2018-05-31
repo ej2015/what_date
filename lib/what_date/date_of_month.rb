@@ -4,7 +4,7 @@ module WhatDate
 		ORDINALS ={ "first" => 1, "second" => 2, "third" => 3, "fourth" => 4, "fifth" => 5, "last" => nil }.freeze
 		ORDERS = 'first||second||third||fourth||fifth||last'.freeze
 		WEEKDAYS = 'monday||tuesday||wednesday||thursday||friday||saturday||sunday'.freeze
-		MONTHS = 'jan||feb||mar||apr||may||jun||jul||aug||sep||oct||nov||dec||january||february||march||april||may||june||july||august||september||october||november||december||sept'.freeze
+		MONTHS = 'january||february||march||april||may||june||july||august||september||october||november||december'.freeze
 
 
 		def date_of_month(order:1, day:, month:, year: Date.today.year)

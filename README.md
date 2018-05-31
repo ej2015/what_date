@@ -42,6 +42,11 @@ client.third_tuesday_of_may_2018
 client.last_monday_of_may_2018
 ##28 May 2018
 
+## default to current year
+## Date.today.year == 2018
+client.last_monday_of_may
+##28 May 2018
+
 ```
 
 ## Development
