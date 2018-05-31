@@ -4,7 +4,7 @@ require 'active_support/core_ext/time/calculations'
 require 'what_date/date_of_month'
 
 module WhatDate
-	class Client 
+	class Client
 		include WhatDate::DateOfMonth
 
 		Date::DAYS_INTO_WEEK.each do |day, inc|
@@ -15,19 +15,19 @@ module WhatDate
 		end
 
 		Date::DAYS_INTO_WEEK.each do |day, inc|
-			define_method("prev_#{day.to_s}".to_sym) do |ref_date = nil|
+			define_method("prev_#{day}".to_sym) do |ref_date = nil|
 		     send(day, ref_date).days_ago(7)
 			end
-		end	
+		end
 
 		Date::DAYS_INTO_WEEK.each do |day, inc|
-			define_method("last_#{day.to_s}".to_sym) do |ref_date = nil|
+			define_method("last_#{day}".to_sym) do |ref_date = nil|
 			  send("prev_#{day.to_s}".to_sym, ref_date)
 			end
 		end	
 
 		Date::DAYS_INTO_WEEK.each do |day, inc|
-			define_method("next_#{day.to_s}".to_sym) do |ref_date = nil|
+			define_method("next_#{day}".to_sym) do |ref_date = nil|
 		     send(day, ref_date).days_since(7)
 			end
 		end			
