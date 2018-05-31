@@ -2,9 +2,9 @@ module WhatDate
 	module DateOfMonth
 
 		ORDINALS ={ "first" => 1, "second" => 2, "third" => 3, "fourth" => 4, "fifth" => 5, "last" => nil }.freeze
-		ORDERS = '(first||second||third||fourth||fifth||last)'.freeze
-		WEEKDAYS = '(monday||tuesday||wednesday||thursday||friday||saturday||sunday)'.freeze
-		MONTHS = '(jan||feb||mar||apr||may||jun||jul||aug||sep||oct||nov||dec||january||february||march||april||may||june||july||august||september||october||november||december||sept)'.freeze
+		ORDERS = 'first||second||third||fourth||fifth||last'.freeze
+		WEEKDAYS = 'monday||tuesday||wednesday||thursday||friday||saturday||sunday'.freeze
+		MONTHS = 'jan||feb||mar||apr||may||jun||jul||aug||sep||oct||nov||dec||january||february||march||april||may||june||july||august||september||october||november||december||sept'.freeze
 
 
 		def date_of_month(order:1, day:, month:, year: Date.today.year)
@@ -25,10 +25,10 @@ module WhatDate
 		end	
 
 		def method_missing(name, *args, &block)
-			if name.to_s =~ Regexp.new("^#{ORDERS}_#{WEEKDAYS}_of_#{MONTHS}_\\d+$", true)
-				methods = name.to_s.split("_")
-				order = ORDINALS[methods[0].downcase]
-				day = format_date_string methods[1]
+			methods = missing_method_reg.match(name)
+			if methods 
+				order = ORDINALS[methods[1].downcase]
+				day = format_date_string methods[2]
 				month = format_date_string methods[3]
 				year = methods[4].to_i
 				order == nil ? date_of_last_week_day_in_month(day, month, year) :
@@ -47,6 +47,10 @@ module WhatDate
 		end
 
 		private
+
+		def missing_method_reg
+      Regexp.new("^(#{ORDERS})_(#{WEEKDAYS})_of_(#{MONTHS})_(\\d+)$", true)
+		end
 
 		def format_date_string(str)
 			str.downcase.capitalize
