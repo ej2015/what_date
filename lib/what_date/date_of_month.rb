@@ -24,12 +24,12 @@ module WhatDate
 		end
 
 		def method_missing(name, *args, &block)
-			methods = missing_method_reg.match(name)
-			if methods
-				order = ORDINALS[methods[1].downcase]
-				day = format_date_string methods[2]
-				month = format_date_string methods[3]
-				year = methods[4] ? methods[4][/\d+/].to_i : Date.today.year
+			day_match = missing_method_reg.match(name)
+			if day_match
+				order = ORDINALS[day_match[:order].downcase]
+				day = format_date_string day_match[:day]
+				month = format_date_string day_match[:month]
+				year = day_match[:year].try(:delete, "_").try(:to_i) || Time.now.year
 				order == nil ? date_of_last_week_day_in_month(day, month, year) :
 				               date_of_month(order: order, day: day, month: month, year: year)
 			else
@@ -46,7 +46,7 @@ module WhatDate
 		private
 
 		def missing_method_reg
-      Regexp.new("^(#{ORDERS})_(#{WEEKDAYS})_of_(#{MONTHS})(_\\d+)?$", true)
+      Regexp.new("^(?<order>#{ORDERS})_(?<day>#{WEEKDAYS})_of_(?<month>#{MONTHS})(?<year>_\\d+)?$", true)
 		end
 
 		def format_date_string(str)
