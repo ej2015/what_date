@@ -21,6 +21,12 @@ module WhatDate
 		end	
 
 		Date::DAYS_INTO_WEEK.each do |day, inc|
+			define_method("last_#{day.to_s}".to_sym) do |ref_date = nil|
+			  send("prev_#{day.to_s}".to_sym, ref_date)
+			end
+		end	
+
+		Date::DAYS_INTO_WEEK.each do |day, inc|
 			define_method("next_#{day.to_s}".to_sym) do |ref_date = nil|
 		     send(day, ref_date).days_since(7)
 			end

@@ -30,7 +30,7 @@ module WhatDate
 				order = ORDINALS[methods[1].downcase]
 				day = format_date_string methods[2]
 				month = format_date_string methods[3]
-				year = methods[4].to_i
+				year = methods[4] ? methods[4][/\d+/].to_i : Date.today.year
 				order == nil ? date_of_last_week_day_in_month(day, month, year) :
 				               date_of_month(order: order, day: day, month: month, year: year)
 			else
@@ -49,7 +49,7 @@ module WhatDate
 		private
 
 		def missing_method_reg
-      Regexp.new("^(#{ORDERS})_(#{WEEKDAYS})_of_(#{MONTHS})_(\\d+)$", true)
+      Regexp.new("^(#{ORDERS})_(#{WEEKDAYS})_of_(#{MONTHS})(_\\d+)?$", true)
 		end
 
 		def format_date_string(str)

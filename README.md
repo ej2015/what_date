@@ -25,8 +25,9 @@ $client = WhatDate.client
 ## get dates
 client.friday
 client.tuesday(Date.new(2018,2,3))  ##date of tuesday in the week of the given date
-client.prev_tuesday
+client.prev_tuesday  ## same as client.last_tuesday
 client.next_tuesday
+client.next_tuesday Date.new(2018,2,3)  ## the following tuesday after the week of the given date
 
 ```
 You can also ask for the date of a particular day of a given month. Use ordinals such as first, second and up to fifth. You can enquire the last date too.

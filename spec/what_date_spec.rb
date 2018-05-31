@@ -96,6 +96,11 @@ describe WhatDate do
 		it "is case insensitive" do
 			expect(client.fourTH_tHursday_of_NOVEMBER_2017).to eq Date.new(2017,11,23)
 		end
+
+		it "defaults to current year" do
+			expect(client.fourTH_tHursday_of_NOVEMBER).to eq Date.new(Date.today.year,11,22)
+		end
+
 	end
 
 	describe "#prev_" do
@@ -105,6 +110,11 @@ describe WhatDate do
 
 		it "returns prevous Tuesday" do
 			expect(client.prev_monday(Date.new(2018,2,1))).to eq Date.new(2018,1,22)
+		end
+
+		it "is aliased as #last_" do
+			expect(client.last_monday(Date.new(2018,2,1))).to eq Date.new(2018,1,22)
+			expect(client.last_wednesday(Date.new(2018,3,12))).to eq client.prev_wednesday(Date.new(2018,3,12))
 		end
 	end
 
